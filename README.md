@@ -11,3 +11,6 @@ This version includes new features such as customizable school day schedules, au
 
 Ideas
 // combatibility
+// server: name changed, added scripts
+
+express app generator
