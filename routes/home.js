@@ -1,17 +1,17 @@
 const express = require("express");
 const Handlebars = require("handlebars");
 
-const homeEx = require("../data/home-ex");
+const ex = require("../data/ex");
 
 var router = express.Router();
 
 router.get("/", function(req, res, next) {
-  res.render("home.hbs", homeEx);
+  res.render("home.hbs", {title: "home", intro: "hi"});
 
 })
 
 router.get("/about", function(req, res, next) {
-  res.send("about");
+  
 });
 
 router.get("/contact", function(req, res, next) {

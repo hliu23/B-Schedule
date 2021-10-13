@@ -10,7 +10,9 @@ This version includes new features such as customizable school day schedules, au
 *still in development
 
 Ideas
-// combatibility
-// server: name changed, added scripts
+// combatibility  
+// server: name changed, added scripts  
+// alternate schedule that is pushed to all?  
+
 
 express app generator
