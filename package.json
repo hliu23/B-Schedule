@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "debug-start": "SET DEBUG=brebeuf-schedule:* & npm start",
     "devstart": "nodemon ./bin/www",
-    "debug-devstart": "SET DEBUG=brebeuf-schedule:* & npm run devstart"
+    "debug-devstart": "SET DEBUG=brebeuf-schedule:* & npm run devstart",
+    "push-heroku": "git push heroku main"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
