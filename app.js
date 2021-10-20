@@ -1,12 +1,13 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const mongoose = require("mongoose");
 
-var homeRouter = require("./routes/home.js");
-var profileRouter = require("./routes/profile.js");
-var setupRouter = require("./routes/setup.js");
+const homeRouter = require("./routes/home.js");
+const profileRouter = require("./routes/profile.js");
+const setupRouter = require("./routes/setup.js");
 
 var app = express();
 
@@ -39,5 +40,19 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+const uri = "mongodb+srv://node:cE5ao5i3QAceGXH3@brebeuf-schedule.wkwac.mongodb.net/Brebeuf-Schedule?retryWrites=true&w=majority";
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+var db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error: "));
+
+var User = require("./models/user.js");
+
+// User.on("index", err => {
+//   if (err) console.error(err);
+//   User.create([{ email: "ab@s.com", password: 1234543 }], err => {
+//     if (err) console.error(err);
+//   });
+// })
 
 module.exports = app;
