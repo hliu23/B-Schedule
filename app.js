@@ -46,13 +46,46 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error: "));
 
+var Break = require("./models/break.js");
 var User = require("./models/user.js");
+var School = require("./models/school.js");
+
+// var fallBreak = new Break({startDate: new Date(), endDate: new Date(2021, 9, 23), name: "Fall Break"});
+// fallBreak.save((err, data) => {
+//   if (err) console.error(err);
+//   console.log(data);
+// })
+
 
 // User.on("index", err => {
 //   if (err) console.error(err);
-//   User.create([{ email: "ab@s.com", password: 1234543 }], err => {
+//   User.create([{ email: "ab@s.com", password: 1234543, class: ["math", "english"]}], err => {
 //     if (err) console.error(err);
 //   });
 // })
+
+School.on("index", function (err) {
+  if (err) console.error(err);
+
+Break.find().
+where("name").equals("Fall Break").
+select("objectId").
+exec((err, data) => {
+  if (err) console.error(err);
+
+  var breakId = [];
+  for (obj in data) {
+    breakId[obj] = data[obj]._id;
+  }
+  var brebeuf = new School({name: "Carmel2", startDate: new Date(), endDate: new Date(2021, 11, 23), breaks: breakId, schedule: [[2,3,1,4],[2,3,4,2]]});
+  brebeuf.save((err, schoolData) => {
+    if (err) console.error(err);
+    if (schoolData) console.log(schoolData);
+  })
+})
+
+  
+})
+
 
 module.exports = app;
