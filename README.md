@@ -18,3 +18,4 @@ Ideas
 express app generator
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 // db user: node | password: cE5ao5i3QAceGXH3
+https://www.geekabyte.io/2013/04/callback-functions-in-loops-in.html

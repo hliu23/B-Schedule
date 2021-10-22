@@ -14,6 +14,7 @@ var breakSchema = new mongoose.Schema({
       return (val > this.startDate);
     }
   },
+  // whether day count resets after break
   reset: {
     type: Boolean,
     default: false
@@ -26,6 +27,7 @@ var breakSchema = new mongoose.Schema({
 
 breakSchema.pre("save", function (next) {
   this.startDate.setHours(0, 0, 0, 0);
+  if (this.endDate) this.endDate.setHours(0, 0, 0, 0);
   next();
 })
 

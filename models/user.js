@@ -13,11 +13,15 @@ var userSchema = new mongoose.Schema({
   // },
   password: {
     type: String,
-    // special chars? length?
     required: true,
   },
   classes: {
     type: [String],
+    required: true
+  },
+  school: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "School",
     required: true
   },
   updatedDate: {
