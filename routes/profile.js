@@ -1,18 +1,21 @@
-var express = require("express");
+const express = require("express");
+const Handlebars = require("handlebars");
+
+const ex = require("../data/ex");
+
 var router = express.Router();
 
-router.get("/create", function(req, res, next) {
-  res.render("home.hbs", {title: "Create Profile | Brebeuf Schedule", intro: "creating"});
+router.get("/", function(req, res, next) {
+  res.render("home.hbs", {title: "Home | B Schedule", intro: "home"});
+
 })
 
-router.get("/user/:userId", function(req, res, next) {
-  res.render("home.hbs", {title: "User | Brebeuf Schedule", intro: req.params.userId});
+router.get("/about", function(req, res, next) {
+  res.render("home.hbs", {title: "About | B Schedule", intro: "about"});
 });
-// modify profile
-// another router?
-router.get("/user/:userId/modify", function(req, res, next) {
-  res.render("home.hbs", {title: "User | Brebeuf Schedule", intro: "modify"});
 
-});
+router.get("/contact", function(req, res, next) {
+  res.render("home.hbs", {title: "Contact Us | B Schedule", intro: "contact"});
+})
 
 module.exports = router;

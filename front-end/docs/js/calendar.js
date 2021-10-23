@@ -1,6 +1,7 @@
+// rewrite later
 function checkExistingCalendar() {
-  var calendarId = window.localStorage.getItem("brebeufScheduleCalendar");
-  window.localStorage.setItem("brebeufScheduleCalendar", null);
+  var calendarId = window.localStorage.getItem("bScheduleCalendar");
+  window.localStorage.setItem("bScheduleCalendar", null);
 
   if (calendarId !== null) {
     gapi.client.calendar.calendars.delete({
@@ -21,7 +22,7 @@ function checkExistingCalendar() {
 function createCalendar() {
   gapi.client.calendar.calendars.insert({
     "resource": {
-      "summary": "Brebeuf Schedule",
+      "summary": "B Schedule",
       "description": "Generated on " + new Date().toLocaleString(),
       "timeZone": "America/Indiana/Indianapolis"
     }

@@ -6,16 +6,16 @@ const ex = require("../data/ex");
 var router = express.Router();
 
 router.get("/", function(req, res, next) {
-  res.render("home.hbs", {title: "Home | Brebeuf Schedule", intro: "home"});
+  res.render("home.hbs", {title: "Home | B Schedule", intro: "home"});
 
 })
 
 router.get("/about", function(req, res, next) {
-  res.render("home.hbs", {title: "About | Brebeuf Schedule", intro: "about"});
+  res.render("home.hbs", {title: "About | B Schedule", intro: "about"});
 });
 
 router.get("/contact", function(req, res, next) {
-  res.render("home.hbs", {title: "Contact Us | Brebeuf Schedule", intro: "contact"});
+  res.render("home.hbs", {title: "Contact Us | B Schedule", intro: "contact"});
 })
 
 module.exports = router;

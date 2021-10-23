@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 
-const uri = "mongodb+srv://node:cE5ao5i3QAceGXH3@brebeuf-schedule.wkwac.mongodb.net/Brebeuf-Schedule?retryWrites=true&w=majority";
+const uri = "mongodb+srv://node:cE5ao5i3QAceGXH3@b-schedule.wkwac.mongodb.net/B-Schedule?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error: "));

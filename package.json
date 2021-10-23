@@ -1,12 +1,12 @@
 {
-  "name": "brebeuf-schedule",
+  "name": "b-schedule",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "debug-start": "SET DEBUG=brebeuf-schedule:* & npm start",
+    "debug-start": "SET DEBUG=b-schedule:* & npm start",
     "devstart": "nodemon ./bin/www",
-    "debug-devstart": "SET DEBUG=brebeuf-schedule:* & npm run devstart",
+    "debug-devstart": "SET DEBUG=b-schedule:* & npm run devstart",
     "push-heroku": "git push heroku main"
   },
   "dependencies": {
