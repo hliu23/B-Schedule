@@ -1,36 +1,34 @@
+:root {
+  --main-dark: #241023;
+  --main-light: #D9D0DE;
+}
+
 body {
-  /*padding: 50px;*/
-  font: 14px "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .navbar-default {
-  background-color: #dbc880; /*#dbc880 #862332*/
-  font-family: "Oswald", sans-serif;
+  background-color: var(--main-light); /*#dbc880 #862332*/
+  font-family: "Noto Sans", sans-serif;
+  font-size: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
-.navbar-brand {
-  padding: 10px;
+#brand-image {
+  max-width: 100%;
+  max-height: 100%;
 }
 
-.navbar-nav>li>a {
-  line-height: 30px;
-  font-size: 20px;
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .btn-default.navbar-btn {
+  color: var(--main-dark);
 }
 
-.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
-  color: #241023;
+.navbar-right {
+  margin-right: 15px;
 }
 
-.navbar-header>.navbar-text {
-  margin-left: 0px;
-  margin-right: 30px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 28px;
-  color: #241023;
+#body {
+  margin-left: 50px;
+  margin-right: 50px;
 }
-/* 
-.navbar-default .navbar-link {
-  color: #241023;
-  display: block;
-} */

@@ -21,8 +21,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", homeRouter);
-app.use("/profile", profileRouter);
 app.use("/setup", setupRouter);
+app.use("/profile", profileRouter);
 
 // catch 404
 app.use(function(req, res, next) {

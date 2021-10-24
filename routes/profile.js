@@ -1,21 +1,15 @@
 const express = require("express");
-const Handlebars = require("handlebars");
-
-const ex = require("../data/ex");
-
 var router = express.Router();
 
 router.get("/", function(req, res, next) {
-  res.render("home.hbs", {title: "Home | B Schedule", intro: "home"});
-
+  var loggedIn = false;
+  if (!loggedIn) res.redirect("/profile/user/0");
+  // else
 })
 
-router.get("/about", function(req, res, next) {
-  res.render("home.hbs", {title: "About | B Schedule", intro: "about"});
+router.get("/user/:userId", function(req, res, next) {
+  var userId = req.params.userId
+  res.render("info.hbs", {title: userId + " | B Schedule"});
 });
-
-router.get("/contact", function(req, res, next) {
-  res.render("home.hbs", {title: "Contact Us | B Schedule", intro: "contact"});
-})
 
 module.exports = router;
