@@ -22,16 +22,25 @@
 // db.on("error", console.error.bind(console, "MongoDB connection error: "));
 
 // var User = require("../models/user.js");
+// var School = require("../models/school.js");
 
-// var classList = ["Community Service - Sem 1", "Precalculus II - Honors", "AP Lang & Comp", "AP Seminar (4's)", "Physics I - AP per. 5", "Camerata", "Latin III", "Computer Science A - AP"];
-
-// init()?
-// User.findOne().where("email").equals("hliu23@amdg.brebeuf.org")
+// var schoolId;
+// School.findOne().where("name").equals("Brebeuf")
+// .select("_id")
 // .exec((err, data) => {
 //   console.log(err);
-//   data.classes = classList;
+//   schoolId = data._id;
+//   User.findOne().where("email").equals("hliu23@amdg.brebeuf.org")
+// .exec((err, data) => {
+//   console.log(err);
+//   // console.log(data);
+//   data.school = schoolId;
 //   data.save((err, data) => {
 //     console.log(err);
 //     console.log(data)
 //   })
 // })
+
+// })
+
+// updateDate

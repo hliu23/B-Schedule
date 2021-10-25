@@ -1,0 +1,13 @@
+<!--objects needed: email
+user?
+-->
+<div id="name">
+  {{#if email}}
+    <h1>Welcome, {{email}}!</h1>
+  {{else}}
+    <h1>Welcome, Anonymous User!</h1>
+    <p>You should be able to create calendars and modify them just like users who are logged in. <br>
+      However, as your data is not saved to our database, it may become unaccessible if you clear your cache or change devices, or if you are accessing the website from an incognito window, etc.
+    </p>
+  {{/if}}
+</div>

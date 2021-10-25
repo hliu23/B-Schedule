@@ -4,22 +4,19 @@ var router = express.Router();
 var loggedIn = false;
 
 router.get("/", function(req, res, next) {
-  if (!loggedIn) res.redirect("/setup/user/0");
+  if (!loggedIn) res.redirect("/setup/user/0/home");
   // else
 })
 
-router.get("/schedule", function(req, res, next) {
-  if (!loggedIn) res.redirect("/setup/user/0");
-  // else
-})
 // function?
-router.get("/user/:userId", function(req, res, next) {
+router.get("/user/:userId/home", function(req, res, next) {
   var userId = req.params.userId;
   res.render("setup.hbs", {title: userId + " | B Schedule"});
 });
 
 
 router.get("/user/:userId/calendar", function(req, res, next) {
+  var userId = req.params.userId;
   res.render("setup.hbs", {title: "Calendar | B Schedule"});
 })
 

@@ -1,0 +1,15 @@
+<!--objects needed: topic, (explanation), list(array of objects with two properties)
+-->
+<h1>{{topic}}</h1>
+{{#if explanation}}
+  <p>{{explanation}}</p>
+{{/if}}
+
+{{#each list}}
+  <div class="col-md-4">
+    {{this.a}}
+  </div>
+  <div class="col-md-8">
+    {{this.b}}
+  </div>
+{{/each}}

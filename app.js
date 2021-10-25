@@ -5,9 +5,9 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
-const homeRouter = require("./routes/home.js");
-const profileRouter = require("./routes/profile.js");
+const basicRouter = require("./routes/basic.js");
 const setupRouter = require("./routes/setup.js");
+const accountRouter = require("./routes/account.js");
 
 var app = express();
 
@@ -20,9 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", homeRouter);
+app.use("/", basicRouter);
 app.use("/setup", setupRouter);
-app.use("/profile", profileRouter);
+app.use("/account", accountRouter);
 
 // catch 404
 app.use(function(req, res, next) {

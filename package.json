@@ -7,7 +7,8 @@
     "debug-start": "SET DEBUG=b-schedule:* & npm start",
     "devstart": "nodemon ./bin/www",
     "debug-devstart": "SET DEBUG=b-schedule:* & npm run devstart",
-    "push-heroku": "git push heroku main"
+    "push-heroku": "git push heroku main",
+    "check-dep": "npx depcheck"
   },
   "dependencies": {
     "async": "^3.2.1",

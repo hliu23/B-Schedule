@@ -20,7 +20,7 @@ var userSchema = new mongoose.Schema({
     required: true
   },
   school: {
-    type: [mongoose.Schema.Types.ObjectId],
+    type: mongoose.Schema.Types.ObjectId,
     ref: "School",
     required: true
   },
