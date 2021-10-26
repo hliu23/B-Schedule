@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+const hbs = require("hbs");
 
 const basicRouter = require("./routes/basic.js");
 const setupRouter = require("./routes/setup.js");
@@ -38,14 +39,16 @@ app.use(function(err, req, res, next) {
   res.render("error");
 });
 
-const uri = "mongodb+srv://node:cE5ao5i3QAceGXH3@b-schedule.wkwac.mongodb.net/B-Schedule?retryWrites=true&w=majority";
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-var db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error: "));
+// const uri = "mongodb+srv://node:cE5ao5i3QAceGXH3@b-schedule.wkwac.mongodb.net/B-Schedule?retryWrites=true&w=majority";
+// mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+// .catch(err => {
+//   if (err) console.error(err);
+// });
+// mongoose.connection.on("error", console.error.bind(console, "MongoDB connection error: "));
 
-var Break = require("./models/break.js");
-var User = require("./models/user.js");
-var School = require("./models/school.js");
+// var Break = require("./models/break.js");
+// var User = require("./models/user.js");
+// var School = require("./models/school.js");
 
 // unique
 

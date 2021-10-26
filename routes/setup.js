@@ -17,7 +17,11 @@ router.get("/user/:userId/home", function(req, res, next) {
 
 router.get("/user/:userId/calendar", function(req, res, next) {
   var userId = req.params.userId;
-  res.render("setup.hbs", {title: "Calendar | B Schedule"});
+  var calendar = {
+    title: "Calendar | B Schedule",
+    school: ["Brebeuf Jesuit", "Center Grove Community Schools"],
+  }
+  res.render("setup.hbs", calendar);
 })
 
 router.get("/user/:userId/schedule", function(req, res, next) {

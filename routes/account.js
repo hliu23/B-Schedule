@@ -7,6 +7,7 @@ router.get("/", function(req, res, next) {
   // else
 })
 
+
 router.get("/user/:userId", function(req, res, next) {
   var userId = req.params.userId;
   var testObj = {

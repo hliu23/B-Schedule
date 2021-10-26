@@ -7,12 +7,20 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans&display=swap">
 
-    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <!-- <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script defer src="/public/javascripts/bootstrap.min.js"></script> -->
+    
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", function() {
+        let firstPath = window.location.pathname.split('/')[1];
+        let link = document.getElementById(firstPath);
+        if (link) link.classList.add("active");
+      })
+    </script>
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -31,16 +39,15 @@
     
         <div class="collapse navbar-collapse" id="main-navbar">
           <ul class="nav navbar-nav">
-            <li><a href="/about">About</a></li> <!--active-->
-            <li><a href="/setup">Setup</a></li>
-            <li><a href="/contact">Contact Us</a></li>
+            <li id="about"><a href="/about">About</a></li> <!--active-->
+            <li id="setup"><a href="/setup">Setup</a></li>
+            <li id="contact"><a href="/contact">Contact Us</a></li>
           </ul>
           
         <ul class="nav navbar-nav navbar-right">
-          <button type="button" class="btn navbar-btn btn-default">Login</button>
-          <button type="button" class="btn navbar-btn btn-primary">Sign Up</button>
+          <a href="/login" class="btn navbar-btn btn-default">Login</a>
+          <a href="/sign-up" class="btn navbar-btn btn-primary">Sign Up</a>
         </ul>
-
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
@@ -49,4 +56,6 @@
     </div>
   </body>
 </html>
-
+<!--add options for classes; more classes; clubs
+mark breaks
+download option-->

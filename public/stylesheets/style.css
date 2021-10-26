@@ -1,6 +1,8 @@
 :root {
-  --main-dark: #241023;
   --main-light: #D9D0DE;
+  --main-dark: #78586F;
+  --nav-black: #241023;
+
 }
 
 body {
@@ -11,8 +13,8 @@ body {
   background-color: var(--main-light); /*#dbc880 #862332*/
   font-family: "Noto Sans", sans-serif;
   font-size: 15px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 #brand-image {
@@ -21,11 +23,11 @@ body {
 }
 
 .navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-btn.btn-default {
-  color: var(--main-dark);
+  color: var(--nav-black);
 }
 
 .navbar-default .navbar-btn.btn-primary {
-  background-color: #78586F;
+  background-color: var(--main-dark);
   border-color: #946D89
 }
 
@@ -34,6 +36,6 @@ body {
 }
 
 #body {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
