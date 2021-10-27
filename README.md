@@ -1,4 +1,4 @@
-# B-Schedule
+# [B-Schedule] (https://b-schedule.herokuapp.com/about)
 A website to help Brebeuf students (and students of the world) navigate the "unusual" schedules of their schools
 // Description tbc, during summer
 

@@ -26,13 +26,12 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 var User = require("../models/user.js");
 var School = require("../models/school.js");
 
-School.findOne().where("name").equals("Brebeuf")
-.select("_id")
-.exec((err, data) => {
-  console.log(err);
-  console.log(data);
-
-})
+User.findOne({email: "hliu23@amdg.brebeuf.org", password: 12345678})
+  .exec((err, data) => {
+    if (err) console.error(err);
+    if (data) console.log(data);
+    else console.log("no data");
+  })
 
 // updateDate
 
