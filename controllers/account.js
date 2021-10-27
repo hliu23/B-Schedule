@@ -1,8 +1,32 @@
 const mongoose = require("mongoose");
-var User = require("./models/user.js");
+var User = require("../models/user.js");
 
-exports.checkLogin = function (req, res) {
-  res.send("RETURN USERID IF LOGGED IN?");
+exports.loginForm = function(req, res, next) {
+  var session = req.session;
+  if (session.userId) res.redirect("/about");
+  else res.render("login.hbs", {title: "Login"});
+}
+
+exports.login = function(req, res, next) {
+  var myemail = "abc@gmail.com";
+  var mypassword = "12345678";
+  var email = req.body.email;
+  var password = req.body.password;
+  var session = req.session;
+
+  if (email == myemail && password == mypassword) {
+    session.userId = req.body.email;
+    res.send("Logged in successfully!");
+  }
+  else {
+    res.send("Invalid username or password");
+  }  
+}
+
+exports.logout = function(req, res, next) {
+  if (!req.session.userId) res.redirect("login");
+  req.session.destroy();
+  res.redirect("/about");
 }
 
 exports.create = function (req, res) {

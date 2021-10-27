@@ -6,23 +6,11 @@ router.get("/", function(req, res, next) {
 })
 
 router.get("/about", function(req, res, next) {
-  res.render("info.hbs", {title: "About | B Schedule"});
+  res.render("info.hbs", {title: "About"});
 });
 
 router.get("/contact", function(req, res, next) {
-  res.render("info.hbs", {title: "Contact Us | B Schedule"});
-})
-
-router.get("/login", function(req, res, next) {
-  res.render("login.hbs", {title: "Login | B Schedule"});
-})
-
-router.post("/login", function(req, res, next) {
-  res.send("login");
-})
-
-router.get("/sign-up", function(req, res, next) {
-  res.render("info.hbs", {title: "Sign Up | B Schedule"});
+  res.render("info.hbs", {title: "Contact Us"});
 })
 
 module.exports = router;

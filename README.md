@@ -16,6 +16,9 @@ Ideas
 
 
 express app generator
+db user: node | password: cE5ao5i3QAceGXH3
+
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
-// db user: node | password: cE5ao5i3QAceGXH3
 https://www.geekabyte.io/2013/04/callback-functions-in-loops-in.html
+https://getbootstrap.com/docs/3.3/
+https://www.section.io/engineering-education/session-management-in-nodejs-using-expressjs-and-express-session/

@@ -11,25 +11,25 @@ router.get("/", function(req, res, next) {
 // function?
 router.get("/user/:userId/home", function(req, res, next) {
   var userId = req.params.userId;
-  res.render("setup.hbs", {title: userId + " | B Schedule"});
+  res.render("setup.hbs", {title: "Setup"});
 });
 
 
 router.get("/user/:userId/calendar", function(req, res, next) {
   var userId = req.params.userId;
   var calendar = {
-    title: "Calendar | B Schedule",
+    title: "Calendar",
     school: ["Brebeuf Jesuit", "Center Grove Community Schools"],
   }
   res.render("setup.hbs", calendar);
 })
 
 router.get("/user/:userId/schedule", function(req, res, next) {
-  res.render("setup.hbs", {title: "Schedule | B Schedule"});
+  res.render("setup.hbs", {title: "Schedule"});
 })
 
 router.get("/user/:userId/classes", function(req, res, next) {
-  res.render("setup.hbs", {title: "Classes | B Schedule"});
+  res.render("setup.hbs", {title: "Classes"});
 })
 
 router.get("/user/:userId/create", function(req, res, next) {
@@ -38,7 +38,3 @@ router.get("/user/:userId/create", function(req, res, next) {
 
 
 module.exports = router;
-
-function loginStatus () {
-  
-}
