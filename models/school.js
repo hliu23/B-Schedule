@@ -41,3 +41,5 @@ var schoolSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("School", schoolSchema);
+
+// updatedDate?

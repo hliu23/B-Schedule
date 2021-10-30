@@ -1,6 +1,3 @@
-const mongoose = require("mongoose");
-var User = require("../models/user.js");
-
 exports.loginForm = function(req, res, next) {
   var session = req.session;
   if (session.userId) res.redirect("/about");
@@ -24,6 +21,7 @@ exports.login = function(req, res, next) {
 
   if (email == myemail && password == mypassword) {
     session.userId = req.body.email;
+    localStorage.setItem("login-status", true); // is there a better way?
     res.send("Logged in successfully!");
   }
   else {
@@ -34,6 +32,7 @@ exports.login = function(req, res, next) {
 exports.logout = function(req, res, next) {
   if (!req.session.userId) res.redirect("login");
   req.session.destroy();
+  localStorage.setItem("login-status", false);
   res.redirect("/about");
 }
 

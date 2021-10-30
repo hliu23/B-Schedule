@@ -32,9 +32,4 @@ router.get("/user/:userId/classes", function(req, res, next) {
   res.render("setup.hbs", {title: "Classes"});
 })
 
-router.get("/user/:userId/create", function(req, res, next) {
-
-})
-
-
 module.exports = router;
