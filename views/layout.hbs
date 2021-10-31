@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>{{title}} | B Schedule</title>
+    {{#if title}}
+      <title>{{title}} | B Schedule</title>
+    {{else}}
+      <title>B Schedule</title>
+    {{/if}}
+
     
     <link rel="icon" href="/images/icon.png">
 
@@ -20,9 +25,6 @@
         let firstPath = window.location.pathname.split('/')[1];
         let link = document.getElementById(firstPath);
         if (link) link.classList.add("active");
-
-        let loginStatus = localStorage.getItem("login-status");
-        if (loginStatus)
       })
     </script>
   </head>
@@ -49,14 +51,17 @@
           </ul>
         
         <ul class="nav navbar-nav navbar-right">
-          <div id="not-logged-in">
-            <a href="/account/login" class="btn navbar-btn btn-default">Login</a>
-            <a href="/account/sign-up" class="btn navbar-btn btn-primary">Sign Up</a>
-          </div>
-          <!--<div id="logged-in">
-            <a href="/account" class="navbar-link">Login</a>
-            <a href="/account/logout" class="btn navbar-btn btn-primary">Logout</a>
-          </div>-->
+          {{#if loginStatus}}
+             <div id="logged-in">
+              <a href="/account" class="navbar-link">Login</a>
+              <a href="/account/logout" class="btn navbar-btn btn-primary">Logout</a>
+            </div>
+          {{else}}
+            <div id="not-logged-in">
+              <a href="/account/login" class="btn navbar-btn btn-default">Login</a>
+              <a href="/account/sign-up" class="btn navbar-btn btn-primary">Sign Up</a>
+            </div>
+          {{/if}}
           
         </ul>
         </div><!-- /.navbar-collapse -->

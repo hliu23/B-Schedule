@@ -1,28 +1,23 @@
 const mongoose = require("mongoose")
 var userSchema = new mongoose.Schema({
-  email: {
+  googleId: {
     type: String,
-    match: [/.+@.+\..+/, "Email not formatted correctly"],
-    required: true, 
-    unique: [true, "This email is already associated with an account"]
+    unique: true,
+    required: true
   },
-  // username: {
-  //   type: String,
-  //   required: true,
-  //   unique: [true, "This username is taken"]
-  // },
-  password: {
+  name: {
     type: String,
-    required: true,
+    default: "User"
+  },
+  refreshToken: {
+    type: String
   },
   classes: {
-    type: [String],
-    required: true
+    type: [String]
   },
   school: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "School",
-    required: true
+    ref: "School"
   },
   updatedDate: {
     type: Date,
@@ -30,5 +25,5 @@ var userSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("GoogleUser", userSchema);
 

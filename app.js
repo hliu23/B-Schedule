@@ -8,6 +8,10 @@ const mongoose = require("mongoose");
 const hbs = require("hbs");
 const {google} = require("googleapis");
 
+// delete debug later
+
+const renderMiddleware = require("./middleware/render.js");
+
 const basicRouter = require("./routes/basic.js");
 const setupRouter = require("./routes/setup.js");
 const accountRouter = require("./routes/account.js");
@@ -18,12 +22,13 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
 app.use(sessions({
-  secret: "1X5KGM1HSEYfFMTokMGy",
+  secret: "1X5KGM1HSEYfFMTokMGy", // change later?
   saveUninitialized: true,
   cookie: { maxAge: 1000 * 60 * 60 * 24 },
   resave: false
 }));
 
+app.use(renderMiddleware);
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -35,12 +40,10 @@ app.use("/", basicRouter);
 app.use("/setup", setupRouter);
 app.use("/account", accountRouter);
 
-// catch 404
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
 app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
@@ -56,9 +59,9 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 });
 mongoose.connection.on("error", console.error.bind(console, "MongoDB connection error: "));
 
-// var Break = require("./models/break.js");
-// var User = require("./models/user.js");
-// var School = require("./models/school.js");
+var Break = require("./models/break.js");
+var User = require("./models/user.js");
+var School = require("./models/school.js");
 
 // unique
 

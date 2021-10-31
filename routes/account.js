@@ -1,18 +1,13 @@
 const express = require("express");
+
 var router = express.Router();
 var accountController = require("../controllers/account.js");
-const oauth2Client = require("../temp/google/google.js").client; // delete later
 
 
 router.get("/login", accountController.loginForm);
 router.post("/login", accountController.login);
-
 router.get("/logout", accountController.logout);
-
-router.post("/google-login", function (req, res, next) {
-  console.log(req.body);
-  res.send("google login");
-})
+router.post("/google-login", accountController.googleLogin);
 
 router.get("/oauth2callback", function (req, res, next) {
   oauth2Client.getToken({code: req.query.code}, (err, data) => {
