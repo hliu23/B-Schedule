@@ -50,20 +50,36 @@
             <li id="contact"><a href="/contact">Contact Us</a></li>
           </ul>
         
-        <ul class="nav navbar-nav navbar-right">
-          {{#if loginStatus}}
-             <div id="logged-in">
-              <a href="/account" class="navbar-link">Login</a>
+        <div class="nav navbar-nav navbar-right">
+            {{#if loginStatus}}
+              {{#if username}}
+              <a href="/account" class="navbar-link">{{username}}</a>
+              {{else}}
+                <a href="/account" class="navbar-link">Profile</a>
+              {{/if}}
               <a href="/account/logout" class="btn navbar-btn btn-primary">Logout</a>
-            </div>
-          {{else}}
-            <div id="not-logged-in">
-              <a href="/account/login" class="btn navbar-btn btn-default">Login</a>
-              <a href="/account/sign-up" class="btn navbar-btn btn-primary">Sign Up</a>
-            </div>
-          {{/if}}
+            {{else}}
+              <div id="g_id_onload"
+                data-client_id="331844839189-btk5imvfr1ju0d9q0bpadr4f72sf28cp.apps.googleusercontent.com"
+                data-login_uri="/account/google-login" 
+                {{!-- "b-schedule.herokuapp.com/account/google-login" --}}
+                data-auto_prompt="false">
+              </div>
+              <div class="g_id_signin"
+                data-type="standard"
+                data-size="large"
+                data-theme="filled_blue"
+                data-text="sign_in_with"
+                data-shape="pill"
+                data-logo_alignment="left">
+              </div>
+            {{/if}}
+            
           
-        </ul>
+                  
+        
+          
+        </div>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>

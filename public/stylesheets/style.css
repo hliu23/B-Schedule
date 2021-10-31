@@ -2,7 +2,6 @@
   --main-light: #D9D0DE;
   --main-dark: #78586F;
   --nav-black: #241023;
-
 }
 
 body {
@@ -29,6 +28,11 @@ body {
 .navbar-default .navbar-btn.btn-primary {
   background-color: var(--main-dark);
   border-color: #946D89
+}
+
+.navbar-default .navbar-link {
+  color: var(--nav-black);
+  padding: 15px 10px;
 }
 
 .navbar-right {

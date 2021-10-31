@@ -1,0 +1,11 @@
+{{#if loginStatus}}
+             <div id="logged-in">
+              
+              <a href="/account/logout" class="btn navbar-btn btn-primary">Logout</a>
+            </div>
+          {{else}}
+            <div id="not-logged-in">
+              <a href="/account/login" class="btn navbar-btn btn-default">Login</a>
+              <a href="/account/sign-up" class="btn navbar-btn btn-primary">Sign Up</a>
+            </div>
+          {{/if}}

@@ -37,12 +37,13 @@ exports.login = function(req, res, next) {
 }
 
 exports.logout = function(req, res, next) {
-  if (!req.session.userId) res.redirect("login");
-  req.session.destroy();
-  localStorage.setItem("login-status", false);
-  res.redirect("/about");
+  if (!req.session.userId) res.redirect("/account/login");
+  else {
+    req.session.destroy();
+    res.redirect("/about");
+  }
 }
-
+// save session?
 
 exports.googleLogin = function (req, res, next) {
   var cookieCsrf = req.cookies.g_csrf_token;
@@ -69,7 +70,6 @@ exports.googleLogin = function (req, res, next) {
     .exec((err, doc) => {
       if (err) console.error(err);
       if (doc) {
-        session.userId = doc.googleId;
         if (doc.name !== token.name) {
           doc.name = token.name;
           doc.updatedDate = Date.now();
@@ -83,6 +83,8 @@ exports.googleLogin = function (req, res, next) {
         // if deleted in db -> functions, but login label looks like the user has already created account
       }
       doc.save((err, data) => {
+        session.userId = doc.googleId;
+        session.username = doc.name;
         if (err) console.error(err);
         res.redirect("/about");
       })
