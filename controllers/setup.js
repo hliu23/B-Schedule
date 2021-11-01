@@ -97,38 +97,38 @@ exports.setupSchool = function (req, res, next) {
 }
 
 exports.setupCalendar = function (req, res, next) {
-  var calendarId;
-  GoogleUser.findOne({googleId: req.session.userId})
-  .exec((err, data) => {
-    if (err) console.error(err);
-    if (data.calendarId) calendarId = data.calendarId;
-    else {
-      var google = getGoogle(req);
-      const calendar = google.calendar({ version: "v3" });
-      var params = {
-        requestBody: {
-          "summary": "B Schedule",
-          "description": "Generated on " + new Date().toLocaleString(),
-          "timeZone": "America/Indiana/Indianapolis"
-        }
-      };
-      calendar.calendars.insert(params, (err, data) => {
-        if (err) console.error(err);
-        calendarId = data.data.id;
-        if (err) console.error(err);
-        else {
-          GoogleUser.findOne({googleId: req.session.userId})
-          .exec((err, data) => {
-            data.calendarId = calendarId;
-            data.save((err, data) => {
-              if (err) console.error(err);
-            })
-          })
-        } 
-      })
-    }
+  // var calendarId;
+  // GoogleUser.findOne({googleId: req.session.userId})
+  // .exec((err, data) => {
+  //   if (err) console.error(err);
+  //   if (data.calendarId) calendarId = data.calendarId;
+  //   else {
+  //     var google = getGoogle(req);
+  //     const calendar = google.calendar({ version: "v3" });
+  //     var params = {
+  //       requestBody: {
+  //         "summary": "B Schedule",
+  //         "description": "Generated on " + new Date().toLocaleString(),
+  //         "timeZone": "America/Indiana/Indianapolis"
+  //       }
+  //     };
+  //     calendar.calendars.insert(params, (err, data) => {
+  //       if (err) console.error(err);
+  //       calendarId = data.data.id;
+  //       if (err) console.error(err);
+  //       else {
+  //         GoogleUser.findOne({googleId: req.session.userId})
+  //         .exec((err, data) => {
+  //           data.calendarId = calendarId;
+  //           data.save((err, data) => {
+  //             if (err) console.error(err);
+  //           })
+  //         })
+  //       } 
+  //     })
+  //   }
     res.render("calendar.hbs");
-  })
+  // })
 }
 
 exports.data = function (req, res, next) {
