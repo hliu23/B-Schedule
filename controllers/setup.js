@@ -127,7 +127,7 @@ exports.setupCalendar = function (req, res, next) {
         } 
       })
     }
-    console.log(calendarId);
+    res.render("calendar.hbs");
   })
 }
 
