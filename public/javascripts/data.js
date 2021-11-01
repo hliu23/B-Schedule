@@ -55,5 +55,3 @@ const normalSchedule = [
 ]
 
 const classroomFormat = /Period\s(?<period>[A-H]), Lunch\s(?<lunch>[1-3])\s\(Section\s\d\)/;
-
-const classes = [null, null, null, null, null, null, null, null];
