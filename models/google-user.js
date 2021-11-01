@@ -19,6 +19,9 @@ var userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "School"
   },
+  calendarId: {
+    type: String
+  },
   updatedDate: {
     type: Date,
     default: Date.now()

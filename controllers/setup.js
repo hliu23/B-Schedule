@@ -43,52 +43,102 @@ exports.setupPage = function (req, res, next) {
 
 exports.setupSchool = function (req, res, next) {
   var schoolName = req.body.school;
-  var google = getGoogle(req);
-  const classroom = google.classroom({ version: "v1" });
-  const params = {
-    "courseStates": "ACTIVE",
-    "studentId": "me"
-  };
-  
-  classroom.courses.list(params, (err, data) => {
-    function letterToNum(letter) {
-      return letter.charCodeAt(0) - 65;
-    }
-
+  School.findOne({name: schoolName}, "classroomFormat")
+  .exec((err, data) => {
     if (err) console.error(err);
-    var courses = data.data.courses;
+    if (data.classroomFormat) {
+      var classroomFormat = new RegExp(data.classroomFormat);
+
+      var google = getGoogle(req);
+
+      const classroom = google.classroom({ version: "v1" });
+      const params = {
+        "courseStates": "ACTIVE",
+        "studentId": "me"
+      };
+      
+      classroom.courses.list(params, (err, data) => {
+        function letterToNum(letter) {
+          return letter.charCodeAt(0) - 65;
+        }
     
-    for (course in courses) {
-      if (courses[course].section !== undefined) {
-        School.findOne({name: schoolName}, "classroomFormat")
-        .exec((err, data) => {
-          var classroomFormat = new RegExp(data.classroomFormat);
-          let info = courses[i].section.match(classroomFormat);
-
-          var classes = [];
-          if (info !== null) {
-            classes[letterToNum(info.groups.period)] = {
-              "name": courses[course].name,
-              "lunch": parseInt(info.groups.lunch, 10)
+        if (err) console.error(err);
+        var courses = data.data.courses;
+        var classes = [];
+        for (course in courses) {
+          var section = courses[course].section;
+          if (section) {
+    
+            let info = section.match(classroomFormat);
+            if (info !== null) {
+              classes[letterToNum(info.groups.period)] = {
+                "name": courses[course].name,
+                "lunch": parseInt(info.groups.lunch, 10)
+              }
             }
-          }
-          GoogleUser.findOne({googleId: req.session.userId})
-          .exec((err, data) => {
-            data.classes = classes;
-            data.markModified("classes");
-            data.save((err, data) => {
-              if (err) console.error(err);
-              console.log(data);
-            })
+            
+          } 
+        }
+        console.log(classes);
+        GoogleUser.findOne({googleId: req.session.userId})
+        .exec((err, data) => {
+          data.classes = classes;
+          data.markModified("classes");
+          data.save((err, data) => {
+            if (err) console.error(err);
+            res.redirect("/setup/calendar");
           })
-
-        
         })
-        
-      } 
+      })
     }
   })
 
   // absolute url
-  
+}
+
+exports.setupCalendar = function (req, res, next) {
+  var calendarId;
+  GoogleUser.findOne({googleId: req.session.userId})
+  .exec((err, data) => {
+    if (err) console.error(err);
+    if (data.calendarId) calendarId = data.calendarId;
+    else {
+      var google = getGoogle(req);
+      const calendar = google.calendar({ version: "v3" });
+      var params = {
+        requestBody: {
+          "summary": "B Schedule",
+          "description": "Generated on " + new Date().toLocaleString(),
+          "timeZone": "America/Indiana/Indianapolis"
+        }
+      };
+      calendar.calendars.insert(params, (err, data) => {
+        if (err) console.error(err);
+        calendarId = data.data.id;
+        if (err) console.error(err);
+        else {
+          GoogleUser.findOne({googleId: req.session.userId})
+          .exec((err, data) => {
+            data.calendarId = calendarId;
+            data.save((err, data) => {
+              if (err) console.error(err);
+            })
+          })
+        } 
+      })
+    }
+    console.log(calendarId);
+  })
+}
+
+exports.data = function (req, res, next) {
+  GoogleUser.findOne({googleId: req.session.userId}, "classes calendarId")
+  .exec((err, data) => {
+    if (err) console.error(err);
+    var send = {
+      classes: data.classes,
+      calendarId: data.calendarId
+    }
+    res.send(send);
+  })
 }
