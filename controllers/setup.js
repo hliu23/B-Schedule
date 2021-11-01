@@ -132,6 +132,8 @@ exports.setupCalendar = function (req, res, next) {
 }
 
 exports.data = function (req, res, next) {
+  var google = getGoogle(req);
+
   GoogleUser.findOne({googleId: req.session.userId}, "classes calendarId")
   .exec((err, data) => {
     if (err) console.error(err);
