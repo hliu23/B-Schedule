@@ -49,7 +49,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
   res.status(err.status || 500);
-  res.render("error");
+  res.render("error"); // check later
 });
 
 const uri = "mongodb+srv://node:cE5ao5i3QAceGXH3@b-schedule.wkwac.mongodb.net/B-Schedule?retryWrites=true&w=majority";
@@ -60,9 +60,10 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.on("error", console.error.bind(console, "MongoDB connection error: "));
 
 var Break = require("./models/break.js");
-var User = require("./models/user.js");
+var GoogleUser = require("./models/google-user.js");
 var School = require("./models/school.js");
 
 // unique
 
+//check comments and console.log
 module.exports = app;

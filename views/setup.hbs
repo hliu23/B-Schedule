@@ -1,71 +1,15 @@
-<!--objects needed: title, Schools[]
--->
-<div class="container-fluid">
-  <div class="btn-group btn-group-justified" role="group"></div>
-  <div class="col-md-4">
-    <a href="./calendar" class="btn btn-warning">Calendar</a>
+<form class="form-inline" action="/setup" method="POST">
+  <div class="form-group">
+    <label for="schools">Select your school: </label>
+    <select id="schools" class="form-control">
+      {{#if school}}
+        {{#each school}}
+          <option value={{this}}>{{this}}</option>
+        {{/each}}
+      {{/if}}
+    </select>
   </div>
-  <div class="col-md-4">
-    <a href="./schedule" class="btn btn-warning">Schedule</a>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Submit</button>
   </div>
-  <div class="col-md-4">
-    <a href="./classes" class="btn btn-warning">Classes</a>
-  </div>
-</div>
-<br>
-<div class="progress">
-  <div class="progress-bar progress-bar-success" style="width: 60%;" role="progressbar"></div>
-</div>
-<h1>{{title}}</h1>
-<br>
-
-
-<select class="form-control">
-  {{#if school}}
-
-      {{#each school}}
-
-        <li><a>{{this}}</a></li>
-      {{/each}}
-    {{/if}}
-    {{#if schedule}}
-    {{/if}}
-    {{#if classes}}
-    {{/if}}
-  
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-  <option>Create a calendar for your school</option>
-</select>
-
-  <ul class="dropdown-menu">
-    
-    
-  </ul>
-</div>
-
-<!--
-  make a second nav bar with progress bar embedded? later
-  calendar: choose available -> check | make own -> save / submit
-  schedule: choose available -> check | make own -> save / submit
-  classes: pull from classroom -> known format or enter format | enter own
-  monday: a option for all three
--->
-
-<!--
-  modify the calendar after creation
-  one day: that day, grab events? link in calendar?
-  all days: grab days after?
-
-  special classes:
-  assumed | specially labelled
-
-  time setting up process?
-  heroku server?
-
-  google meet link?
-  precompile?
--->
+</form>

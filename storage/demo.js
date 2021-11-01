@@ -8,7 +8,6 @@ var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error: "));
 
 var Break = require("../models/break.js");
-var User = require("../models/user.js");
 var School = require("../models/school.js");
 var GoogleUser = require("../models/google-user.js");
 

@@ -1,17 +1,17 @@
 var express = require("express");
 var router = express.Router();
 
-var loggedIn = false;
+var classroomController = require("../controllers/classroom.js");
 
 router.get("/", function(req, res, next) {
-  if (!loggedIn) res.redirect("/setup/user/0/home");
-  // else
+  res.render("setup.hbs", {title: "Setup"});
 })
+
+router.get("/", classroomController.getClasses);
 
 // function?
 router.get("/user/:userId/home", function(req, res, next) {
   var userId = req.params.userId;
-  res.render("setup.hbs", {title: "Setup"});
 });
 
 

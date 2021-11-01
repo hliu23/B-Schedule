@@ -34,6 +34,9 @@ var schoolSchema = new mongoose.Schema({
       return sameLength;
     }
   },
+  classroomFormat: {
+    type: String
+  },
   updatedDate: {
     type: Date,
     default: Date.now()
