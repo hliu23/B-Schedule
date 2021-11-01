@@ -13,7 +13,7 @@ var userSchema = new mongoose.Schema({
     type: String
   },
   classes: {
-    type: [String]
+    type: Object
   },
   school: {
     type: mongoose.Schema.Types.ObjectId,

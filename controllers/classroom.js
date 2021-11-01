@@ -1,32 +1,10 @@
-const {google} = require("googleapis");
-const mongoose = require("mongoose");
-const GoogleUser = require("../models/google-user.js");
-
-const CLIENT_ID = "331844839189-btk5imvfr1ju0d9q0bpadr4f72sf28cp.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
-
-const oauth2Client = new google.auth.OAuth2(
-  CLIENT_ID,
-  CLIENT_SECRET,
-  "http://localhost:3000/account/oauth2callback" // change later
-);
-
 
 function getRefreshToken (req, res) {
   // check refreshToken?
   var refreshToken = req.session.refreshToken;
   if (!refreshToken) {
-    GoogleUser.findOne({ googleId: req.session.userId })
-    .select("refreshToken")
-    .exec((err, data) => {
-      if (err) console.error(err);
-      if (data) refreshToken = data.refreshToken;
-    })
-  }
-  if (!refreshToken) {
     return null; 
   } else {
-    oauth2Client.setCredentials({refresh_token: refreshToken});
     const classroom = google.classroom({ version: "v1", auth: oauth2Client});
     return classroom;
   }
@@ -58,7 +36,7 @@ exports.getClasses = function (req, res, next) {
 
      
     // });
-    res.render("setup.hbs", {school: ["Brebeuf", "Carmel"]});
+    // res.render("setup.hbs", {school: ["Brebeuf", "Carmel"]});
     
   }
 }

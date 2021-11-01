@@ -14,8 +14,4 @@ router.get("/contact", function(req, res, next) {
   res.render("info.hbs", {title: "Contact Us"});
 })
 
-// router.get("/test", function (req, res, next) {
-//   res.redirect(authUrl);
-// })
-
 module.exports = router;

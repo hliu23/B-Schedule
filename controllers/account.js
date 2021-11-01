@@ -7,11 +7,13 @@ const GoogleUser = require("../models/google-user.js");
 
 const CLIENT_ID = "331844839189-btk5imvfr1ju0d9q0bpadr4f72sf28cp.apps.googleusercontent.com";
 const CLIENT_SECRET = "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";
+const REDIRECT_URI = "https://b-schedule.herokuapp.com/account/oauth2callback";
 
 const oauth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
-  "http://localhost:3000/account/oauth2callback" // change later
+  REDIRECT_URI
+  // "http://localhost:3000/account/oauth2callback" // change later
 );
 
 
@@ -59,7 +61,6 @@ exports.googleLogin = function (req, res, next) {
         session.username = data.name;
         if (data.refreshToken) {
           // check if token expired
-
           req.session.refreshToken = data.refreshToken;
 
           res.redirect("/setup");
@@ -104,9 +105,8 @@ exports.oauth2callback = function (req, res, next) {
           doc.updatedDate = Date.now();
           doc.save((err, data) => {
             if (err) console.error(err);
-
             req.session.refreshToken = data.refresh_token;
-            
+
             res.redirect("/setup");
           })
         } else res.redirect("/account/please-login");
